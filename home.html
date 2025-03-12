@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Basic styles for the page */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffa725;
+        }
+
+        h3{
+            color: black    ;
+        }
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Container for the cards */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 200px;
+        }
+
+        /* Card styling */
+        .card {
+            background-color: #fff5e4;  /*a5158c, C1D8C3, 6A9C89*/
+            width: 250px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Responsive styling */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">Coalition</div>
+
+    <div class="container">
+        <div class="card" onclick="posts()">
+            <h3>Posts</h3>
+        </div>
+        <div class="card" onclick="photos()">
+            <h3>Photos</h3>
+        </div>
+        <div class="card" onclick="videos()">
+            <h3>Videos</h3>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript can be added here if needed for interactivity
+        // Currently, this page is purely HTML and CSS for layout
+        function posts(){
+            window.location.href = "posts.html";
+        }
+        function photos(){
+            window.location.href = "photos.html";
+        }
+        function videos(){
+            window.location.href = "videos.html";
+        }
+    </script>
+
+</body>
+</html>

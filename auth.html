@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coalition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffa725;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .logo {
+      display: block;
+      margin: 20px auto; /* Centers the logo and adds space around it */
+      width: 200px; /* Default logo width */
+      height: 200px; /* Maintain aspect ratio */
+    }
+
+
+    .login-container {
+  background-color: #fff5e4;
+  ;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Horizontally center items */
+  justify-content: center; /* Vertically center items */
+  text-align: center;
+}
+
+.blinking-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: lightgoldenrodyellow; /* White text color for contrast */
+  animation: blink 1s infinite; /* Apply the blink animation */
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.login-container h2 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .logo {
+        width: 100px; /* Logo width for small screens */
+      }
+
+}
+
+  </style>
+</head>
+<body>
+
+    
+<!--<img src="Capture.JPG" alt="Website Logo" class="logo">-->
+  <div class="login-container">
+    <h2>Coalition</h2>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Firebase SDK (Updated version) -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js';
+    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAA0A_D_q9vFk3dfPvUJbTj94kDVZuhrpw",
+      authDomain: "auth-2f27b.firebaseapp.com",
+      projectId: "auth-2f27b",
+      storageBucket: "auth-2f27b.firebasestorage.app",
+      messagingSenderId: "578610779228",
+      appId: "1:578610779228:web:f0bd2778da9b7a33c2c299",
+      measurementId: "G-3TXPJ18C2M"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Login function - Now inside the module scope
+    window.login = function() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          window.location.href = "home.html";
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert("Error: " + errorMessage);
+        });
+    }
+  </script>
+</body>
+</html>
